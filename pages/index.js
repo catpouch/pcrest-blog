@@ -10,7 +10,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header />
+        <Header/>
         
       </main>
     </div>
