@@ -5,7 +5,6 @@ import matter from 'gray-matter'
 import fs from 'fs'
 
 export default function Home({posts}) {
-  console.log(posts)
   return (
     <div className="container">
       <Head>
@@ -25,6 +24,7 @@ export async function getStaticProps() {
   const posts = files.map(name => {
     const post = fs.readFileSync('./posts/' + name)
     const {data: frontmatter} = matter(post)
+    frontmatter.slug = name.replace('.md', '')
     return frontmatter
   })
   return  {
