@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Header from '../components/Header'
 import PostList from '../components/PostList'
-import * as matter from 'gray-matter'
-
-const fs = require("fs")
+import matter from 'gray-matter'
+import fs from 'fs'
 
 export default function Home({posts}) {
   console.log(posts)
@@ -22,7 +20,7 @@ export default function Home({posts}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const files = fs.readdirSync('./posts')
   const posts = files.map(name => {
     const post = fs.readFileSync('./posts/' + name)
