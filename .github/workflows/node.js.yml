@@ -3,8 +3,7 @@
 
 name: Next.js Build + Start
 
-on:
-  workflow-dispatch
+on: workflow_dispatch
 
 jobs:
   next-js-start:
