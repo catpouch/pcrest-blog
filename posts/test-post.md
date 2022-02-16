@@ -1,6 +1,6 @@
 ---
 title: 'first post'
-date: 'balls'
+date: 'asdf'
 description: 'Lorem ipsum dolor sit amet'
 thumbnailUrl: 'https://i.redd.it/3eealqlmb8m61.jpg'
 ---
