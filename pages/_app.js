@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 
 export default function Blog({Component, pageProps}) {
     return <Component {...pageProps}/>
