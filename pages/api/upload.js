@@ -26,9 +26,9 @@ export default async function handler(req, res) {
 
     try {
         //bruh moment: fix this: it doesn't work: help
-        await res.unstable_revalidate(`/posts/${name}`)
         await res.unstable_revalidate('/')
-        return res.status(201).json({revalidated: true})
+        await res.unstable_revalidate(`/posts/${name}`)
+        return res.redirect(302, `/posts/${name}`)
     } catch(err) {
         console.log(err)
         return res.status(500).send('Failed to revalidate page.')
