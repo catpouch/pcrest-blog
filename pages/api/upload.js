@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     if(req.method !== 'POST') {
         return res.status(405).send('Only POST requests allowed!')
     }
@@ -10,7 +10,7 @@ export default function handler(req, res) {
     const keys = Object.keys(body)
 
     if(!(keys.length === 2 && keys[1] == 'content' && keys[0] == 'name')) {
-        res.status(400).send('Invalid request!')
+        return res.status(400).send('Invalid request!')
     }
 
     const files = fs.readdirSync('./posts')
@@ -25,11 +25,12 @@ export default function handler(req, res) {
     fs.writeFileSync('./posts/' + name + '.md', body.content)
 
     try {
-        //figure out how to do dynamic routing with this (does not work like this)
-        res.unstable_revalidate('/posts/[post]')
-        res.unstable_revalidate('/')
+        //bruh moment: fix this: it doesn't work: help
+        await res.unstable_revalidate(`/posts/${name}`)
+        await res.unstable_revalidate('/')
         return res.status(201).json({revalidated: true})
     } catch(err) {
+        console.log(err)
         return res.status(500).send('Failed to revalidate page.')
     }
 }
