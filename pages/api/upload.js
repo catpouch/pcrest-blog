@@ -25,7 +25,6 @@ export default async function handler(req, res) {
     fs.writeFileSync('./posts/' + name + '.md', body.content)
 
     try {
-        //bruh moment: fix this: it doesn't work: help
         await res.unstable_revalidate('/')
         await res.unstable_revalidate(`/posts/${name}`)
         return res.redirect(302, `/posts/${name}`)

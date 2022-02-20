@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
+import Toolbar from '../components/Toolbar'
 import PostList from '../components/PostList'
 import matter from 'gray-matter'
 import fs from 'fs'
@@ -13,7 +14,9 @@ export default function Home({posts}) {
 
       <main>
         <Header/>
+        <Toolbar/>
         <PostList posts={posts}/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>a
       </main>
     </div>
   )
