@@ -5,13 +5,15 @@ import DefaultErrorPage from 'next/error'
 
 export default function Post(props) {
 
-    function delete_post(e) {
+    async function delete_post(e) {
         //redirects dont work help
         /*fetch(`/api/delete_post/${props.post}`, {
             method: 'POST',
             redirect: 'follow'
         })*/
-        fetch(`/api/delete_post/${props.post}`)
+        const response = await fetch(`/api/delete_post/${props.post}`, {
+            method: 'DELETE'
+        })
         console.log("yo")
     }
 

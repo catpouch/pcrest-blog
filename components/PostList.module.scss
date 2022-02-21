@@ -1,0 +1,36 @@
+.postWrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+}
+
+.thumbWrapper {
+    width: inherit;
+    height: 225px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.textWrapper {
+    width: 275px;
+    .title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    .description {
+        margin-bottom: 10px;
+    }
+    .authorDate {
+        font-size: 0.75rem;
+        color: #505050;
+    }
+}
+
+.listWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    gap: 10px;
+}

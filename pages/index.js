@@ -28,7 +28,10 @@ export async function getStaticProps() {
     const post = fs.readFileSync('./posts/' + name)
     const {data: frontmatter} = matter(post)
     frontmatter.slug = name.replace('.md', '')
-    return frontmatter
+    return {
+      name,
+      frontmatter
+    }
   })
   return  {
     props: {
