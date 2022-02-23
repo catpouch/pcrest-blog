@@ -2,8 +2,10 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import DefaultErrorPage from 'next/error'
+import { useRouter } from 'next/router'
 
 export default function Post(props) {
+    const router = useRouter()
 
     async function delete_post(e) {
         //redirects dont work help
@@ -11,10 +13,10 @@ export default function Post(props) {
             method: 'POST',
             redirect: 'follow'
         })*/
-        const response = await fetch(`/api/delete_post/${props.post}`, {
+        await fetch(`/api/delete_post/${props.post}`, {
             method: 'DELETE'
         })
-        console.log("yo")
+        router.push('/')
     }
 
     if(!props) {
