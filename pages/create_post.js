@@ -1,3 +1,5 @@
+import { getSession } from "next-auth/react"
+
 export default function CreatePost() {
     return (
         <form action='/api/upload' method='post' autoComplete="off">
@@ -8,4 +10,18 @@ export default function CreatePost() {
             <input type='submit' value='post'/>
         </form>
     )
+}
+
+export async function getServerSideProps(context) {
+    const session = await getSession(context)
+    if(!session) {
+        context.res.writeHead(302, {Location: '/'})
+        context.res.end()
+        return {props: {}}
+    }
+    return {
+        props: {
+            user: session.user
+        }
+    }
 }
