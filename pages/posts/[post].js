@@ -4,8 +4,6 @@ import ReactMarkdown from 'react-markdown'
 import DefaultErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import styles from './post.module.scss'
-import Header from '../../components/Header'
-import Toolbar from '../../components/Toolbar'
 import Image from 'next/image'
 
 export default function Post(props) {
@@ -26,8 +24,6 @@ export default function Post(props) {
 
     return (
         <div>
-            <Header/>
-            <Toolbar/>
             <div className={styles.contentWrapper}>
                 <div className={styles.textWrapper}>
                     <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>

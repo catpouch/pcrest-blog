@@ -1,10 +1,7 @@
 import Head from 'next/head'
-import Header from '../components/Header'
-import Toolbar from '../components/Toolbar'
 import PostList from '../components/PostList'
 import matter from 'gray-matter'
 import fs from 'fs'
-import styles from './index.module.scss'
 
 export default function Home({posts}) {
   return (
@@ -14,10 +11,7 @@ export default function Home({posts}) {
       </Head>
 
       <main>
-        <Header/>
-        <Toolbar/>
         <PostList posts={posts}/>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>a
       </main>
     </div>
   )
