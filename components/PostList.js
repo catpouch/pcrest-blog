@@ -3,10 +3,10 @@ import Link from 'next/link'
 import styles from './PostList.module.scss'
 
 export default function PostList({posts}) {
-    function generatePostText(post) {
+    function generatePost(post) {
         return (
             <Link href={'/posts/' + post.slug}>
-                <div className={styles.postWrapper}>
+                <a className={styles.postWrapper}>
                     <div className={styles.thumbWrapper}>
                         {post.thumbnailUrl ? <Image src={post.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
                     </div>
@@ -22,7 +22,7 @@ export default function PostList({posts}) {
                             {post.date ? post.date : ""}
                         </div>
                     </div>
-                </div>
+                </a>
             </Link>
         )
     }
@@ -30,7 +30,7 @@ export default function PostList({posts}) {
     return (
         <div className={styles.listWrapper}>
             {posts.map((post) => (
-                <div>{generatePostText(post.frontmatter)}</div>
+                <div key={post.name}>{generatePost(post.frontmatter)}</div>
             ))}
         </div>
     )

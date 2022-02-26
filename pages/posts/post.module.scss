@@ -1,0 +1,29 @@
+.contentWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.textWrapper {
+    width: min(750px, 65%);
+    line-height: 2rem;
+
+    .title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        h1 {
+            margin-bottom: 6px;
+            font-size: 1.8rem;
+        }
+    }
+
+    p {
+        margin-top: 15px;
+    }
+}
+
+.thumbnail {
+    width: 500px;
+    height: 275px;
+    position: relative;
+}

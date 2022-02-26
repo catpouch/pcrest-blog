@@ -3,16 +3,15 @@ import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import DefaultErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import styles from './post.module.scss'
+import Header from '../../components/Header'
+import Toolbar from '../../components/Toolbar'
+import Image from 'next/image'
 
 export default function Post(props) {
     const router = useRouter()
 
     async function delete_post(e) {
-        //redirects dont work help
-        /*fetch(`/api/delete_post/${props.post}`, {
-            method: 'POST',
-            redirect: 'follow'
-        })*/
         await fetch(`/api/delete_post/${props.post}`, {
             method: 'DELETE'
         })
@@ -27,8 +26,17 @@ export default function Post(props) {
 
     return (
         <div>
-            <div>{props.frontmatter.title}</div>
-            <ReactMarkdown>{props.content}</ReactMarkdown>
+            <Header/>
+            <Toolbar/>
+            <div className={styles.contentWrapper}>
+                <div className={styles.textWrapper}>
+                    <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>
+                    <div className={styles.thumbnail}>
+                        <Image src={props.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/>
+                    </div>
+                    <ReactMarkdown>{props.content}</ReactMarkdown>
+                </div>
+            </div>
             <button onClick={delete_post}>delete post</button>
         </div>
     )

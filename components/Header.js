@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import headerImage from '../public/header.png'
 import styles from './Header.module.scss'
+import Link from 'next/link'
 
 export default function Header() {
     return (
@@ -9,8 +10,10 @@ export default function Header() {
                 <Image src={headerImage} objectFit='cover' layout='fill' />
             </div>
             <div className={styles.textWrapper}>
-                <div className={styles.title}> The Goat Scene & Herd </div>
-                <div className={styles.subtitle}> To Inform and Entertain the Pacific Crest Community </div>
+                <Link href='/'>
+                    <a className={styles.title}>The Goat Scene & Herd</a>
+                </Link>
+                <div className={styles.subtitle}>To Inform and Entertain the Pacific Crest Community</div>
             </div>
         </div>
     )

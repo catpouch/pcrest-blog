@@ -4,13 +4,13 @@ export default function Toolbar() {
     return (
         <ul className={styles.bottomWrapper}>
             <li key={0}>
-                HOME
+                WHAT BUTTONS SHOULD GO HERE?
             </li>
             <li key={1}>
-                THE 2019-20 TEAM
+                ADD SOME
             </li>
             <li key={2}>
-                ABOUT US
+                JEFF
             </li>
         </ul>
     )

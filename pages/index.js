@@ -4,6 +4,7 @@ import Toolbar from '../components/Toolbar'
 import PostList from '../components/PostList'
 import matter from 'gray-matter'
 import fs from 'fs'
+import styles from './index.module.scss'
 
 export default function Home({posts}) {
   return (

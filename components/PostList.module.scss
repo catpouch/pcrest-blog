@@ -4,6 +4,8 @@
     flex-direction: column;
     align-items: center;
     margin: 30px;
+    text-decoration: inherit;
+    color: inherit;
 }
 
 .thumbWrapper {
@@ -31,6 +33,9 @@
 
 .listWrapper {
     display: grid;
-    grid-template-columns: repeat(5, 20%);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, 330px);
+    align-content: space-evenly;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-items: center;
 }
