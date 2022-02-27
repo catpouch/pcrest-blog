@@ -3,3 +3,4 @@
 /posts/
 /public/
 .env.local
+user_permissions.json

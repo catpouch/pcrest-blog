@@ -12,7 +12,7 @@ export default function Toolbar() {
         )
     } else {
         sign = (
-            <a key={3} onClick={() => signIn()}>
+            <a key={3} onClick={() => signIn('google')}>
                 SIGN IN
             </a>
         )

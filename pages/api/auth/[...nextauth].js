@@ -12,5 +12,13 @@ export default NextAuth({
     jwt: {
         encryption: true
     },
-    secret: process.env.NEXTAUTH_SECRET
+    secret: process.env.NEXTAUTH_SECRET,
+    callbacks: {
+        async signIn({ account, profile }) {
+            if(account.provider === 'google' && profile.hd === 'pcrest.org' && profile.email_verified) {
+                return true
+            }
+            return '/'
+        }
+    }
 })

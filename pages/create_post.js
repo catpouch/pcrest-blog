@@ -1,4 +1,5 @@
 import { getSession } from "next-auth/react"
+import permissions from '../user_permissions.json'
 
 export default function CreatePost() {
     return (
@@ -14,7 +15,7 @@ export default function CreatePost() {
 
 export async function getServerSideProps(context) {
     const session = await getSession(context)
-    if(!session) {
+    if(!session || !permissions.admins.includes(session.user.email)) {
         context.res.writeHead(302, {Location: '/'})
         context.res.end()
         return {props: {}}
