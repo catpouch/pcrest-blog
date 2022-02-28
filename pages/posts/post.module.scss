@@ -4,6 +4,36 @@
     justify-content: center;
 }
 
+.home {
+    font-size: 0.8rem;
+    position: absolute;
+    top: calc(clamp(10rem, 30vh, 17rem) + 6rem);
+    left: calc(50% - min(750px, 65%) / 2 - 9.5rem);
+    text-decoration: none;
+    color: inherit;
+    #one {
+        display: inherit;
+    }
+    #two {
+        display: none;
+    }
+    
+    @media only screen and (max-width: 1175px) {
+        #one {
+            display: none;
+        }
+        #two {
+            display: inherit;
+        }
+    }
+}
+
+@media only screen and (max-width: 1175px) {
+    .home {
+        left: calc(50% - min(750px, 65%) / 2 - 3rem);
+    }
+}
+
 .textWrapper {
     width: min(750px, 65%);
     line-height: 2rem;
@@ -23,7 +53,7 @@
 }
 
 .thumbnail {
-    width: 500px;
+    width: min(500px, 70vw);
     height: 275px;
     position: relative;
 }
