@@ -8,29 +8,26 @@
     font-size: 0.8rem;
     position: absolute;
     top: calc(clamp(10rem, 30vh, 17rem) + 6rem);
-    left: calc(50% - min(750px, 65%) / 2 - 9.5rem);
-    text-decoration: none;
+    right: calc(50% + min(750px, 65%) / 2 + 2rem);
     color: inherit;
+    span {
+        cursor: pointer;
+        float: right;
+    }
     #one {
-        display: inherit;
+        display: block;
     }
     #two {
         display: none;
     }
     
-    @media only screen and (max-width: 1175px) {
+    @media only screen and (max-width: 1000px) {
         #one {
             display: none;
         }
         #two {
-            display: inherit;
+            display: block;
         }
-    }
-}
-
-@media only screen and (max-width: 1175px) {
-    .home {
-        left: calc(50% - min(750px, 65%) / 2 - 3rem);
     }
 }
 
