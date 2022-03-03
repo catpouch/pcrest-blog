@@ -1,4 +1,5 @@
 .postWrapper {
+    overflow-wrap: anywhere;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -34,8 +35,6 @@
 .listWrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, 330px);
-    align-content: space-evenly;
-    align-items: center;
     justify-content: space-evenly;
     justify-items: center;
 }

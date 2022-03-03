@@ -4,10 +4,21 @@ import permissions from '../user_permissions.json'
 export default function CreatePost() {
     return (
         <form action='/api/upload' method='post' autoComplete="off">
-            <label htmlFor='name'>title:</label><br/>
-            <input type='text' name='name' id='name'/><br/>
-            <label htmlFor='content'>content:</label><br/>
+            <label htmlFor='title'> title: </label><br/>
+            <input type='text' name='title' id='title'/><br/>
+
+            <label htmlFor='author'> author: </label><br/>
+            <input type='text' name='author' id='author'/><br/>
+
+            <label htmlFor='description'> description: </label><br/>
+            <input type='text' name='description' id='description'/><br/>
+
+            <label htmlFor='thumbnail'> thumbnail: </label><br/>
+            <input type='file' name='thumbnail' id='thumbnail' accept='image/*'/><br/>
+
+            <label htmlFor='content'> content: </label><br/>
             <textarea name='content' id='content'/><br/>
+
             <input type='submit' value='post'/>
         </form>
     )

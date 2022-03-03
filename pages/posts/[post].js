@@ -25,7 +25,7 @@ export default function Post(props) {
                 <div className={styles.textWrapper}>
                     <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>
                     <div className={styles.thumbnail}>
-                        <Image src={props.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/>
+                        {props.frontmatter.thumbnailUrl ? <Image src={props.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
                     </div>
                     <ReactMarkdown>{props.content}</ReactMarkdown>
                 </div>
