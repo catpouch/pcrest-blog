@@ -6,13 +6,13 @@ export default function Toolbar() {
     var sign
     if(session) {
         sign = (
-            <a key={3} onClick={() => signOut()}>
+            <a key={2} onClick={() => signOut()}>
                 SIGN OUT
             </a>
         )
     } else {
         sign = (
-            <a key={3} onClick={() => signIn('google')}>
+            <a key={2} onClick={() => signIn('google')}>
                 SIGN IN
             </a>
         )
@@ -20,12 +20,15 @@ export default function Toolbar() {
     return (
         <ul className={styles.bottomWrapper}>
             <a key={0}>
-                WHAT BUTTONS SHOULD GO HERE?
+                JOURNALISM STAFF
             </a>
             <a key={1}>
-                ADD SOME
+                ADMIN PORTAL
             </a>
             {sign}
+            <a key={3}>
+                SEARCH
+            </a>
         </ul>
     )
 }
