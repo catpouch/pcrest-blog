@@ -1,8 +1,17 @@
 import fs from 'fs'
+import nextConnect from 'next-connect'
+import multer from 'multer'
 import { getSession } from 'next-auth/react'
 import permissions from '../../user_permissions.json'
 
-export default async function handler(req, res) {
+const apiRoute = nextConnect ({
+    onNoMatch(req, res) {
+        res.status(405).send('Only POST requests allowed!')
+    }
+})
+
+
+apiRoute.post((req, res) => {
 
     function processContent(content) {
         return content.replace(/(\r\n|\n|\r)\s*/gm, (match) => {
@@ -22,14 +31,10 @@ export default async function handler(req, res) {
         return mm + '/' + dd + '/' + yyyy
     }
 
-    const session = await getSession({ req })
+    /*const session = await getSession({ req })
     if(!session || !permissions.admins.includes(session.user.email)) {
         return res.status(403).end()
-    }
-
-    if(req.method !== 'POST') {
-        return res.status(405).send('Only POST requests allowed!')
-    }
+    }*/
 
     const body = req.body
     
@@ -53,6 +58,9 @@ export default async function handler(req, res) {
 
     var content = processContent(body.content)
 
+    console.log(body.thumbnail)
+    // fs.writeFileSync('./public' + )
+
     const frontmatter = `---
 title: '${body.title.replace("'", "''")}'
 author: '${body.author.replace("'", "''")}'
@@ -67,11 +75,15 @@ thumbnailUrl: '/2022-02-15_17.34.13.png'
     fs.writeFileSync('./posts/' + title + '.md', content)
 
     try {
-        await res.unstable_revalidate('/')
-        await res.unstable_revalidate(`/posts/${title}`)
+        async () => {
+            await res.unstable_revalidate('/')
+            await res.unstable_revalidate(`/posts/${title}`)
+        }
         return res.redirect(302, `/posts/${title}`)
     } catch(err) {
         console.log(err)
         return res.status(500).send('Failed to revalidate page.')
     }
-}
+})
+
+export default apiRoute

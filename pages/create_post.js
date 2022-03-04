@@ -24,6 +24,7 @@ export default function CreatePost() {
     )
 }
 
+/*
 export async function getServerSideProps(context) {
     const session = await getSession(context)
     if(!session || !permissions.admins.includes(session.user.email)) {
@@ -36,4 +37,4 @@ export async function getServerSideProps(context) {
             user: session.user
         }
     }
-}
+}*/

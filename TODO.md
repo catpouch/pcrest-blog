@@ -1,6 +1,6 @@
 # TODO
 
-- better authentication
+- ~~better authentication~~
      - ~~no sign-in/out transition page~~
      - ~~specific user permissions~~ (possibly insecure? seems fine though)
 
@@ -11,6 +11,7 @@
      - page styling
      - thumbnails
      - in-text images
+     - real time markdown styling
      - ~~text processing (tabs -> zwsp + 4 nbsp)~~
      - ~~user auth~~
 
