@@ -9,8 +9,8 @@
 
 - better post creation
      - page styling
-     - thumbnails
-     - in-text images
+     - ~~thumbnails~~
+     - in-text images (halfway there)
      - real time markdown styling
      - ~~text processing (tabs -> zwsp + 4 nbsp)~~
      - ~~user auth~~

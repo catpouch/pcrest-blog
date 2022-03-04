@@ -2,8 +2,19 @@ import { getSession } from "next-auth/react"
 import permissions from '../user_permissions.json'
 
 export default function CreatePost() {
+    /*const upload_api = async event => {
+        event.preventDefault()
+        await fetch(`api/upload`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            body: new FormData(event.target)
+        })
+    }*/
+
     return (
-        <form action='/api/upload' method='post' autoComplete="off">
+        <form action='api/upload' method='post' encType='multipart/form-data' autoComplete="off">
             <label htmlFor='title'> title: </label><br/>
             <input type='text' name='title' id='title'/><br/>
 
@@ -19,12 +30,14 @@ export default function CreatePost() {
             <label htmlFor='content'> content: </label><br/>
             <textarea name='content' id='content'/><br/>
 
+            <label htmlFor='images'> images: </label><br/>
+            <input type='file' name='images' id='images' accept='image/*' multiple/><br/>
+
             <input type='submit' value='post'/>
         </form>
     )
 }
 
-/*
 export async function getServerSideProps(context) {
     const session = await getSession(context)
     if(!session || !permissions.admins.includes(session.user.email)) {
@@ -37,4 +50,4 @@ export async function getServerSideProps(context) {
             user: session.user
         }
     }
-}*/
+}

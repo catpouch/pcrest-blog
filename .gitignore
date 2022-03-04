@@ -1,6 +1,10 @@
 /.next/
 /node_modules/
-/posts/
-/public/
+/posts/*
+!/posts/.gitkeep
+/public/*
+!/public/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
 .env.local
 user_permissions.json
