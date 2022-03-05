@@ -1,13 +1,19 @@
 import fs from 'fs'
-import matter from 'gray-matter'
-import ReactMarkdown from 'react-markdown'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
 import DefaultErrorPage from 'next/error'
 import styles from './post.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Post(props) {
-    if(!props) {
+const components = {
+    Image: (props) => (
+        <Image {...props} />
+    )
+}
+
+export default function Post({source}) {
+    if(!source) {
         return (
             <DefaultErrorPage statusCode={404}/>
         )
@@ -23,11 +29,11 @@ export default function Post(props) {
                     </div>
                 </Link>
                 <div className={styles.textWrapper}>
-                    <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>
+                    <div className={styles.title}><h1>{source.frontmatter.title}</h1>Posted on {source.frontmatter.date} by {source.frontmatter.author}</div>
                     <div className={styles.thumbnail}>
-                        {props.frontmatter.thumbnailUrl ? <Image src={props.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
+                        {source.frontmatter.thumbnailUrl ? <Image src={source.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
                     </div>
-                    <ReactMarkdown>{props.content}</ReactMarkdown>
+                    <MDXRemote {...source} components={components}/>
                 </div>
             </div>
         </div>
@@ -43,16 +49,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params: {post}}) {
     try {
-        const markdown = fs.readFileSync('./posts/' + post + '.md', 'utf-8')
-        const {data: frontmatter, content} = matter(markdown)
+        const markdown = fs.readFileSync('./posts/' + post + '.mdx', 'utf-8')
+        const source = await serialize(markdown, {parseFrontmatter: true})
         return {
             props: {
-                post,
-                frontmatter,
-                content
+                source
             }
         }
     } catch(err) {
+        console.log(err)
         return {
             notFound: true
         }

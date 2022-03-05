@@ -30,7 +30,7 @@ export default function PostList({posts}) {
     return (
         <div className={styles.listWrapper}>
             {posts.map((post) => (
-                <div key={post.name}>{generatePost(post.frontmatter)}</div>
+                <div key={post.frontmatter.slug}>{generatePost(post.frontmatter)}</div>
             ))}
         </div>
     )

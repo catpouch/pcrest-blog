@@ -11,7 +11,7 @@ function processTitle(title) {
     pretitle = pretitle.replace(/ /g, '_').replace(regex, '')
     let index = 1
     var title = pretitle
-    while(files.includes(title + '.md')) {
+    while(files.includes(title + '.mdx')) {
         title = pretitle + '_' + index
         index++
     }
@@ -88,7 +88,7 @@ thumbnailUrl: '/uploads/${req.files.thumbnail[0].filename}'
 
 `
     content = frontmatter + content
-    fs.writeFileSync('./posts/' + title + '.md', content)
+    fs.writeFileSync('./posts/' + title + '.mdx', content)
 
     try {
         await res.unstable_revalidate('/')
