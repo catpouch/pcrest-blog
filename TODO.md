@@ -12,7 +12,7 @@
      - ~~thumbnails~~
      - in-text images (halfway there)
      - real time markdown styling
-     - ~~text processing (tabs -> zwsp + 4 nbsp)~~
+     - SANITIZE USER INPUT
      - ~~user auth~~
 
 - better post deletion

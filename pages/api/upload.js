@@ -11,7 +11,7 @@ function processTitle(title) {
     pretitle = pretitle.replace(/ /g, '_').replace(regex, '')
     let index = 1
     var title = pretitle
-    while(files.includes(title + '.mdx')) {
+    while(files.includes(title + '.json')) {
         title = pretitle + '_' + index
         index++
     }
@@ -44,15 +44,6 @@ apiRoute.use(upload.fields([
 ]))
 
 apiRoute.post(async (req, res) => {
-    function processContent(content) {
-        return content.replace(/(\r\n|\n|\r)\s*/gm, (match) => {
-            if(match.startsWith(`\r\n`)) {
-                return `  \n&#8203;${'&nbsp;'.repeat(match.length - 2)}`
-            }
-            return `  \n&#8203;${'&nbsp;'.repeat(match.length - 1)}`
-        })
-    }
-
     function getCurrentDate() {
         var today = new Date()
         var dd = String(today.getDate())
@@ -76,19 +67,21 @@ apiRoute.post(async (req, res) => {
     }
 
     var title = processTitle(body.title)
-    var content = processContent(body.content)
 
-    const frontmatter = `---
-title: '${body.title.replace("'", "''")}'
-author: '${body.author.replace("'", "''")}'
-date: '${getCurrentDate()}'
-description: '${body.description.replace("'", "''")}'
-thumbnailUrl: '/uploads/${req.files.thumbnail[0].filename}'
----
-
-`
-    content = frontmatter + content
-    fs.writeFileSync('./posts/' + title + '.mdx', content)
+    //IMPORTANT: SANITIZE THIS
+    const frontmatter = {
+        title: body.title,
+        author: body.author,
+        date: getCurrentDate(),
+        description: body.description,
+        thumbnailUrl: `/uploads/${req.files.thumbnail[0].filename}`
+    }
+    
+    let final = {
+        frontmatter,
+        content: body.content
+    }
+    fs.writeFileSync('./posts/' + title + '.json', JSON.stringify(final))
 
     try {
         await res.unstable_revalidate('/')
