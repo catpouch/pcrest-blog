@@ -1,19 +1,12 @@
 import fs from 'fs'
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemote } from 'next-mdx-remote'
 import DefaultErrorPage from 'next/error'
 import styles from './post.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
+import parse from 'html-react-parser'
 
-const components = {
-    Image: (props) => (
-        <Image {...props} />
-    )
-}
-
-export default function Post({source}) {
-    if(!source) {
+export default function Post(props) {
+    if(!props) {
         return (
             <DefaultErrorPage statusCode={404}/>
         )
@@ -29,11 +22,11 @@ export default function Post({source}) {
                     </div>
                 </Link>
                 <div className={styles.textWrapper}>
-                    <div className={styles.title}><h1>{source.frontmatter.title}</h1>Posted on {source.frontmatter.date} by {source.frontmatter.author}</div>
+                    <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>
                     <div className={styles.thumbnail}>
-                        {source.frontmatter.thumbnailUrl ? <Image src={source.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
+                        {props.frontmatter.thumbnailUrl ? <Image src={props.frontmatter.thumbnailUrl} objectFit='cover' layout='fill'/> : null}
                     </div>
-                    <MDXRemote {...source} components={components}/>
+                    {parse(props.content)}
                 </div>
             </div>
         </div>
@@ -49,11 +42,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params: {post}}) {
     try {
-        const markdown = fs.readFileSync('./posts/' + post + '.mdx', 'utf-8')
-        const source = await serialize(markdown, {parseFrontmatter: true})
+        const postJSON = JSON.parse(fs.readFileSync('./posts/' + post + '.json', 'utf-8'))
+        const frontmatter = postJSON.frontmatter
+        const content = postJSON.content
         return {
             props: {
-                source
+                frontmatter,
+                content
             }
         }
     } catch(err) {

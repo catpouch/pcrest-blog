@@ -16,19 +16,19 @@ export default function CreatePost() {
     return (
         <form action='api/upload' method='post' encType='multipart/form-data' autoComplete="off">
             <label htmlFor='title'> title: </label><br/>
-            <input type='text' name='title' id='title'/><br/>
+            <input type='text' name='title' id='title' required/><br/>
 
             <label htmlFor='author'> author: </label><br/>
-            <input type='text' name='author' id='author'/><br/>
+            <input type='text' name='author' id='author' required/><br/>
 
             <label htmlFor='description'> description: </label><br/>
-            <input type='text' name='description' id='description'/><br/>
+            <input type='text' name='description' id='description' required/><br/>
 
             <label htmlFor='thumbnail'> thumbnail: </label><br/>
-            <input type='file' name='thumbnail' id='thumbnail' accept='image/*'/><br/>
+            <input type='file' name='thumbnail' id='thumbnail' accept='image/*' required/><br/>
 
             <label htmlFor='content'> content: </label><br/>
-            <textarea name='content' id='content'/><br/>
+            <textarea name='content' id='content' required/><br/>
 
             <label htmlFor='images'> images: </label><br/>
             <input type='file' name='images' id='images' accept='image/*' multiple/><br/>
