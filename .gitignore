@@ -4,8 +4,7 @@
 !/posts/.gitkeep
 /public/*
 !/public/.gitkeep
-!/public/uploads/
-public/uploads/*
-!/public/uploads/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
 .env.local
 user_permissions.json

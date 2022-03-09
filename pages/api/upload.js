@@ -20,7 +20,7 @@ function processTitle(title) {
 
 const upload = multer({
     storage: multer.diskStorage({
-        destination: './public/uploads',
+        destination: './uploads',
         filename: (req, file, cb) => {
             const regex = /(?:\.([^.]+))?$/
             if(file.fieldname === 'thumbnail') {
@@ -74,7 +74,7 @@ apiRoute.post(async (req, res) => {
         author: body.author,
         date: getCurrentDate(),
         description: body.description,
-        thumbnailUrl: `/uploads/${req.files.thumbnail[0].filename}`
+        thumbnailUrl: req.files.thumbnail[0].filename
     }
     
     let final = {

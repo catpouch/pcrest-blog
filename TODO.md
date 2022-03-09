@@ -4,15 +4,12 @@
      - ~~no sign-in/out transition page~~
      - ~~specific user permissions~~ (possibly insecure? seems fine though)
 
-- domain name
-     - pcrest.org subdomain
-
 - better post creation
      - page styling
      - ~~thumbnails~~
      - in-text images (halfway there)
-     - real time markdown styling
-     - SANITIZE USER INPUT
+     - wysiwyg editor
+     - SANITIZE USER INPUT (done?)
      - ~~user auth~~
 
 - better post deletion
@@ -34,3 +31,7 @@
   - user auth
   - instagram api integration
   - actually make the page
+
+- domain name
+     - ~~pcrest.org subdomain~~
+     - ssl certificate
