@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     }
     const { delete_post } = await req.query
     try {
-        fs.unlinkSync('./posts/' + delete_post + '.mdx')
+        fs.unlinkSync('./posts/' + delete_post + '.json')
     } catch(e) {
         return res.status(410).end()
     }
