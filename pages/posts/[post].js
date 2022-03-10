@@ -3,9 +3,18 @@ import DefaultErrorPage from 'next/error'
 import styles from './post.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import parse from 'html-react-parser'
+import parse, { attributesToProps } from 'html-react-parser'
 
 export default function Post(props) {
+    const processOptions = {
+        replace: domNode => {
+            console.log(attributesToProps(domNode.attribs))
+            if(domNode.name === 'img') {
+                return <Image {...attributesToProps(domNode.attribs)}/>
+            }
+        }
+    }
+
     if(!props) {
         return (
             <DefaultErrorPage statusCode={404}/>
@@ -26,7 +35,7 @@ export default function Post(props) {
                     <div className={styles.thumbnail}>
                         {props.frontmatter.thumbnailUrl ? <Image src={`http://localhost:3000/api/images/${props.frontmatter.thumbnailUrl}`} objectFit='cover' layout='fill'/> : null}
                     </div>
-                    {parse(props.content)}
+                    {parse(props.content, processOptions)}
                 </div>
             </div>
         </div>
