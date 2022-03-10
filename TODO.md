@@ -7,7 +7,7 @@
 - better post creation
      - page styling
      - ~~thumbnails~~
-     - in-text images (halfway there)
+     - ~~in-text images (halfway there)~~
      - wysiwyg editor
      - SANITIZE USER INPUT (done?)
      - ~~user auth~~
