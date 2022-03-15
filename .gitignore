@@ -2,8 +2,6 @@
 /node_modules/
 /posts/*
 !/posts/.gitkeep
-/public/*
-!/public/.gitkeep
 /uploads/*
 !/uploads/.gitkeep
 .env.local
