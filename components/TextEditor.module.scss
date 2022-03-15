@@ -1,0 +1,28 @@
+.toolbar {
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: repeat(4, 2.5rem);
+    width: fit-content;
+
+    button {
+        all: unset;
+        padding: 0.3rem;
+        padding-bottom: calc(0.3rem - 2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #dadada;
+        border-right: 0;
+    }
+    button:last-child {
+        border-right: 2px solid #dadada;
+    }
+}
+
+.editor {
+    font-size: 1em;
+}
+
+.wrapper {
+    background-color: white;
+}

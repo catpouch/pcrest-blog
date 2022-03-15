@@ -8,7 +8,6 @@ import parse, { attributesToProps } from 'html-react-parser'
 export default function Post(props) {
     const processOptions = {
         replace: domNode => {
-            console.log(attributesToProps(domNode.attribs))
             if(domNode.name === 'img') {
                 return <Image {...attributesToProps(domNode.attribs)}/>
             }

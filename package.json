@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
     "html-react-parser": "^1.4.8",
     "multer": "^1.4.4",
     "next": "^12.1.0",

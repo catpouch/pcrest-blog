@@ -9,9 +9,11 @@ const apiRoute = nextConnect({
 
 apiRoute.get(async (req, res) => {
     const { image } = await req.query
-    const file = fs.readFileSync(`./uploads/${image}`)
-    res.setHeader('Content-Type', 'image/jpg')
-    return res.send(file)
+    const path = `./uploads/${image}`
+    const stat = fs.statSync(path)
+    res.writeHead(200, {'Content-Type': 'image/jpeg', 'Content-Length': stat.size})
+    const stream = fs.createReadStream(path)
+    stream.pipe(res)
 })
 
 export default apiRoute

@@ -34,7 +34,11 @@ const upload = multer({
 
 const apiRoute = nextConnect ({
     onNoMatch(req, res) {
-        res.status(405).send('Only POST requests allowed!')
+        res.status(405).end('Only POST requests allowed!')
+    },
+    onError(error, req, res, next) {
+        console.log(error)
+        res.status(500).end('Internal server error.')
     }
 })
 
@@ -44,11 +48,12 @@ apiRoute.use(upload.fields([
 ]))
 
 apiRoute.post(async (req, res) => {
+    console.log(Object.keys(req.body))
     function getCurrentDate() {
-        var today = new Date()
-        var dd = String(today.getDate())
-        var mm = String(today.getMonth() + 1)
-        var yyyy = today.getFullYear()
+        const today = new Date()
+        const dd = String(today.getDate())
+        const mm = String(today.getMonth() + 1)
+        const yyyy = today.getFullYear()
 
         return mm + '/' + dd + '/' + yyyy
     }
@@ -68,7 +73,7 @@ apiRoute.post(async (req, res) => {
 
     var title = processTitle(body.title)
 
-    //IMPORTANT: SANITIZE THIS
+    //IMPORTANT: SANITIZE THIS (maybe not important?)
     const frontmatter = {
         title: body.title,
         author: body.author,
