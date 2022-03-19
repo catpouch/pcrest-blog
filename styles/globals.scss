@@ -1,7 +1,16 @@
+@use '/styles/vars';
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 body {
     margin: 0;
     font-family: 'Merriweather';
-    background-color: #e7c8e5;
+    background-color: vars.$main-light;
+}
+
+div.DraftEditor-root {
+    min-height: 40rem;
+}
+
+div.DraftEditor-editorContainer, div.public-DraftEditor-content {
+    min-height: inherit;
 }

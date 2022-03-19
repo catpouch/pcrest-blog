@@ -1,8 +1,10 @@
+@use '../styles/vars';
+
 .toolbar {
     margin-top: 2px;
     display: grid;
     grid-template-columns: repeat(4, 2.5rem);
-    width: fit-content;
+    background-color: vars.$main-medium;
 
     button {
         all: unset;
@@ -11,18 +13,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid #dadada;
-        border-right: 0;
+        margin: 2px;
+        margin-right: 0;
     }
     button:last-child {
-        border-right: 2px solid #dadada;
+        margin-right: 2px;
     }
 }
 
 .editor {
     font-size: 1em;
+    height: 40rem;
 }
 
 .wrapper {
     background-color: white;
+    height: 100%;
+    margin-bottom: 0.25rem;
 }

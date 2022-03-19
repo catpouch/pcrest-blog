@@ -4,6 +4,7 @@ import dynamic from "next/dynamic"
 import {EditorState, convertToRaw} from 'draft-js'
 import {useState} from 'react'
 import draftToHtml from 'draftjs-to-html'
+import styles from './create_post.module.scss'
 const TextEditor = dynamic(() => import('../components/TextEditor'), {ssr: false})
 
 export default function CreatePost() {
@@ -17,29 +18,29 @@ export default function CreatePost() {
             method: 'POST',
             body: data
         })
-        console.log('balls')
     }
 
     return (
-        <form onSubmit={upload_api} encType='multipart/form-data' autoComplete="off">
-            {/* IMPORTANT: MAKE ALL OF THESE REQUIRED */}
-            <label htmlFor='title'> title: </label><br/>
-            <input type='text' name='title' id='title'/><br/>
-
-            <label htmlFor='author'> author: </label><br/>
-            <input type='text' name='author' id='author'/><br/>
-
-            <label htmlFor='description'> description: </label><br/>
-            <input type='text' name='description' id='description'/><br/>
-
-            <label htmlFor='thumbnail'> thumbnail: </label><br/>
-            <input type='file' name='thumbnail' id='thumbnail' accept='image/*'/><br/>
-
-            <label htmlFor='images'> images: </label><br/>
-            <input type='file' name='images' id='images' accept='image/*' multiple/><br/>
-
-            <TextEditor editorState={editorState} setEditorState={setEditorState}/>
-
+        <form onSubmit={upload_api} encType='multipart/form-data' autoComplete="off" className={styles.wrapper}>
+            <div className={styles.labels_inputs}>
+                <div className={styles.labels}>
+                    <label htmlFor='title'> Title: </label>
+                    <label htmlFor='author'> Author: </label>
+                    <label htmlFor='description'> Description: </label>
+                    <label htmlFor='thumbnail'> Thumbnail: </label>
+                    {/* <label htmlFor='images'> Images: </label> */}
+                </div>
+                <div className={styles.inputs}>
+                    <input type='text' name='title' id='title' required/>
+                    <input type='text' name='author' id='author' required/>
+                    <input type='text' name='description' id='description' required/>
+                    <input type='file' name='thumbnail' id='thumbnail' accept='image/*' required/>
+                    {/* <input type='file' name='images' id='images' accept='image/*' multiple/> */}
+                </div>
+            </div>
+            <div className={styles.editor}>
+                <TextEditor editorState={editorState} setEditorState={setEditorState}/>
+            </div>
             <input type='submit' value='post'/>
         </form>
     )

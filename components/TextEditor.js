@@ -1,11 +1,8 @@
-import {Editor, EditorState, RichUtils} from 'draft-js'
-import {useState, useRef, useCallback} from 'react'
+import {Editor, RichUtils} from 'draft-js'
 import styles from './TextEditor.module.scss'
 import 'draft-js/dist/Draft.css'
 
 export default function TextEditor(props) {
-    //const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
-
     const styleMap = {
         /*'FUNNY': {
             color: 'blue'
@@ -46,24 +43,7 @@ export default function TextEditor(props) {
                     <img src={'/format_strikethrough.svg'}/>
                 </button>
             </div>
-            <Editor editorState={props.editorState} onChange={props.setEditorState} handleKeyCommand={handleKeyCommand} customStyleMap={styleMap} className={styles.editor}/>
+            <Editor editorState={props.editorState} onChange={props.setEditorState} handleKeyCommand={handleKeyCommand} customStyleMap={styleMap}/>
         </div>
     )
 }
-
-//with react-quill (as a backup)
-/*import dynamic from 'next/dynamic'
-import { useState } from 'react'
-const ReactQuill = dynamic(() => import('react-quill'), {ssr: false})
-import 'react-quill/dist/quill.snow.css'
-
-export default function TextEditor() {
-    const [value, setValue] = useState('')
-    
-    return (
-        <div>
-            <ReactQuill value={value} onChange={setValue}/>
-            <div>{value}</div>
-        </div>
-    )
-}*/
