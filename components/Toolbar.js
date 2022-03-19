@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from 'next-auth/react'
+import {useSession, signIn, signOut} from 'next-auth/react'
 import styles from './Toolbar.module.scss'
 import permissions from '../user_permissions.json'
 

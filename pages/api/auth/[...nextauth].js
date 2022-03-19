@@ -18,7 +18,10 @@ export default NextAuth({
             if(account.provider === 'google' && profile.hd === 'pcrest.org' && profile.email_verified) {
                 return true
             }
-            return '/'
+            return '/failed_sign_in'
+        },
+        async redirect({url, baseUrl}) {
+            return baseUrl
         }
-    }
+    },
 })

@@ -1,7 +1,7 @@
 # TODO
 
 - better sign in
-  - failure redirect page
+  - ~~failure redirect page~~
   - prevent autofill (safari only? idk)
 
 - better post deletion
