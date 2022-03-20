@@ -5,19 +5,22 @@ import {EditorState, convertToRaw} from 'draft-js'
 import {useState} from 'react'
 import draftToHtml from 'draftjs-to-html'
 import styles from './create_post.module.scss'
+import {useRouter} from 'next/router'
 const TextEditor = dynamic(() => import('../components/TextEditor'), {ssr: false})
 
 export default function CreatePost() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
+    const router = useRouter()
 
     const upload_api = async event => {
         event.preventDefault()
         var data = new FormData(event.target)
         data.append('content', draftToHtml(convertToRaw(editorState.getCurrentContent())))
-        await fetch('/api/upload', {
+        const response = await fetch('/api/upload', {
             method: 'POST',
             body: data
         })
+        router.push(await response.text())
     }
 
     return (

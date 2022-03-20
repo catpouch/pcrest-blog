@@ -91,7 +91,8 @@ apiRoute.post(async (req, res) => {
     try {
         await res.unstable_revalidate('/')
         await res.unstable_revalidate(`/posts/${title}`)
-        return res.redirect(302, `/posts/${title}`)
+        await res.unstable_revalidate('/admin_portal')
+        return res.writeHead(201).end(`/posts/${title}`)
     } catch(err) {
         console.log(err)
         return res.status(500).send('Failed to revalidate page.')

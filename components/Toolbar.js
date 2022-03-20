@@ -7,13 +7,13 @@ export default function Toolbar(props) {
     var sign = null
     if(session) {
         sign = (
-            <a key={2} onClick={() => signOut()}>
+            <a key={1} onClick={() => signOut()}>
                 SIGN OUT
             </a>
         )
     } else {
         sign = (
-            <a key={2} onClick={() => signIn('google')}>
+            <a key={1} onClick={() => signIn('google')}>
                 SIGN IN
             </a>
         )

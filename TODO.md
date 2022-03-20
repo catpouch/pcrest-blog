@@ -9,15 +9,16 @@
      - warning message
      - ~~user auth~~
 
+- admin portal
+  - style condensed post list
+  - delete posts
+  - create posts
+  - edit posts
+
 # LOW PRIORITY
 
 - post transfer from old blog
      - python?
-
-- admin portal
-  - delete posts
-  - create posts
-  - edit posts
 
 - goatsmakeart integration
   - user auth
