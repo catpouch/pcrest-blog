@@ -10,9 +10,10 @@
      - ~~user auth~~
 
 - admin portal
-  - style condensed post list
-  - delete posts
-  - create posts
+  - ~~style condensed post list~~
+  - ~~delete posts~~
+  - ~~create posts~~
+  - style dropdown menu
   - edit posts
 
 # LOW PRIORITY
