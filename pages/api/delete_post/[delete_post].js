@@ -5,6 +5,7 @@ import permissions from '../../../user_permissions.json'
 export default async function handler(req, res) {
     const session = await getSession({ req })
     if(!session || !permissions.admins.includes(session.user.email)) {
+        console.log('nuts')
         return res.status(403).end()
     }
     if(req.method !== 'DELETE') {

@@ -1,0 +1,52 @@
+@use '/styles/vars';
+
+.listWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.2rem;
+}
+
+.createPost {
+    all: unset;
+    cursor: pointer;
+    background-color: vars.$main-medium;
+    border-radius: 7px;
+    padding: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.topWrapper {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid gray;
+}
+
+.postWrapper {
+    all: unset;
+    cursor: pointer;
+    margin: 0.5rem;
+    width: min(65vw, 30rem);
+}
+
+.authorDate {
+    font-size: 0.75rem;
+}
+
+.hamburger {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        cursor: pointer;
+    }
+}
+
+// .menu {
+//     display: none;
+// }
