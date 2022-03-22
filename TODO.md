@@ -13,7 +13,7 @@
   - ~~style condensed post list~~
   - ~~delete posts~~
   - ~~create posts~~
-  - style dropdown menu
+  - ~~style dropdown menu~~
   - edit posts
 
 # LOW PRIORITY

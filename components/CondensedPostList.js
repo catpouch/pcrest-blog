@@ -19,6 +19,7 @@ export default function CondensedPostList({posts}) {
         } else if(slug === oldSlug) {
             menuRef.current.style.visibility = 'hidden'
         }
+        menuRef.current.style.top = e.target.getBoundingClientRect().top + window.scrollY + 24 + 'px'
         oldSlug = slug
     }
 
@@ -64,7 +65,7 @@ export default function CondensedPostList({posts}) {
                 ))}
             </div>
             <div className={styles.menu} ref={menuRef}>
-                <button>Edit post (currently unavailable)</button>
+                <button disabled title='Currently unavailable. Ask Isaac to edit the post manually.'>Edit post</button>
                 <button onClick={deletePost}>Delete post</button>
             </div>
         </div>
