@@ -1,12 +1,23 @@
 import CondensedPostList from '../components/CondensedPostList'
 import fs from 'fs'
+import {useSession} from 'next-auth/react'
+import {useRouter} from 'next/router'
 
 export default function AdminPortal({posts}) {
-    return (
-        <div>
-            <CondensedPostList posts={posts}/>
-        </div>
-    )
+  const {data: session, status} = useSession()
+  const router = useRouter()
+
+  if(status === 'unauthenticated') {
+    //THIS DOESN'T CHECK FOR ADMIN PERMS
+    //maybe make an api call? just to avoid serversideprops
+    router.push('/unauthorized')
+  }
+
+  return (
+      <div>
+          <CondensedPostList posts={posts}/>
+      </div>
+  )
 }
 
 export async function getStaticProps() {

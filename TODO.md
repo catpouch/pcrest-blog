@@ -6,15 +6,11 @@
 
 - better post deletion
      - grace period
-     - warning message
+     - ~~warning message~~
      - ~~user auth~~
 
-- admin portal
-  - ~~style condensed post list~~
-  - ~~delete posts~~
-  - ~~create posts~~
-  - ~~style dropdown menu~~
-  - edit posts
+- post editing
+  - update admin portal
 
 # LOW PRIORITY
 
@@ -45,3 +41,9 @@
      - wysiwyg editor
      - SANITIZE USER INPUT (done?)
      - user auth
+
+- admin portal
+  - style condensed post list
+  - delete posts
+  - create posts
+  - style dropdown menu

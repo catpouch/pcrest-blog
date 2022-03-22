@@ -52,7 +52,7 @@ export default function CreatePost() {
 export async function getServerSideProps(context) {
     const session = await getSession(context)
     if(!session || !permissions.admins.includes(session.user.email)) {
-        context.res.writeHead(302, {Location: '/'})
+        context.res.writeHead(302, {Location: '/unauthorized'})
         context.res.end()
         return {props: {}}
     }

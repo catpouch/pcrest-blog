@@ -6,8 +6,11 @@ import {useRouter} from 'next/router'
 export default function CondensedPostList({posts}) {
     const router = useRouter()
     const menuRef = useRef(null)
+    const warningRef = useRef(null)
+    const cancelDeleteRef = useRef(null)
     useEffect(() => {
         menuRef.current.style.visibility = 'hidden'
+        warningRef.current.style.visibility = 'hidden'
     }, [])
 
     var slug = null
@@ -23,8 +26,19 @@ export default function CondensedPostList({posts}) {
         oldSlug = slug
     }
 
+    function openWarningMenu() {
+        warningRef.current.style.visibility = 'visible'
+    }
+
+    function closeWarningMenu(e) {
+        if(e.target === warningRef.current || e.target === cancelDeleteRef.current) {
+            warningRef.current.style.visibility = 'hidden'
+        }
+    }
+
     async function deletePost(e) {
         if(slug) {
+            warningRef.current.style.visibility = 'hidden'
             await fetch('/api/delete_post/' + slug, {
                 method: 'DELETE'
             })
@@ -66,7 +80,14 @@ export default function CondensedPostList({posts}) {
             </div>
             <div className={styles.menu} ref={menuRef}>
                 <button disabled title='Currently unavailable. Ask Isaac to edit the post manually.'>Edit post</button>
-                <button onClick={deletePost}>Delete post</button>
+                <button onClick={openWarningMenu}>Delete post</button>
+            </div>
+            <div className={styles.warningWrapper} ref={warningRef} onClick={closeWarningMenu}>
+                <div className={styles.warning} ref={warningRef}>
+                    <h1>Are you sure you want to delete this post?</h1>
+                    <button className={styles.buttonConfirm} onClick={deletePost}>Confirm</button>
+                    <button onClick={closeWarningMenu}  ref={cancelDeleteRef}>Cancel</button>
+                </div>
             </div>
         </div>
     )
