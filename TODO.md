@@ -4,11 +4,6 @@
   - ~~failure redirect page~~
   - prevent autofill (safari only? idk)
 
-- better post deletion
-     - grace period
-     - ~~warning message~~
-     - ~~user auth~~
-
 - post editing
   - update admin portal
 
@@ -25,6 +20,11 @@
 - domain name
      - ~~pcrest.org subdomain~~
      - ssl certificate
+
+- better post deletion
+     - grace period
+     - ~~warning message~~
+     - ~~user auth~~
 
 # DONE
 
