@@ -31,6 +31,7 @@ export default function Post(props) {
                 </Link>
                 <div className={styles.textWrapper}>
                     <div className={styles.title}><h1>{props.frontmatter.title}</h1>Posted on {props.frontmatter.date} by {props.frontmatter.author}</div>
+                    <div className={styles.edited}>{props.frontmatter.edited ? `Edited on ${props.frontmatter.edited}` : null}</div>
                     <div className={styles.thumbnail}>
                         {props.frontmatter.thumbnailUrl ? <Image src={`http://localhost:3000/api/images/${props.frontmatter.thumbnailUrl}`} objectFit='cover' layout='fill'/> : null}
                     </div>

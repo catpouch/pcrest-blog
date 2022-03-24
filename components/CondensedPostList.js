@@ -47,6 +47,12 @@ export default function CondensedPostList({posts}) {
         }
     }
 
+    function editPost(e) {
+        if(slug) {
+            router.push(`/edit_post?name=${slug}`)
+        }
+    }
+
     function generatePost(post) {
         return (
             <div className={styles.topWrapper} key={post.slug} data-slug={post.slug}>
@@ -79,7 +85,7 @@ export default function CondensedPostList({posts}) {
                 ))}
             </div>
             <div className={styles.menu} ref={menuRef}>
-                <button disabled title='Currently unavailable. Ask Isaac to edit the post manually.'>Edit post</button>
+                <button onClick={editPost}>Edit post</button>
                 <button onClick={openWarningMenu}>Delete post</button>
             </div>
             <div className={styles.warningWrapper} ref={warningRef} onClick={closeWarningMenu}>

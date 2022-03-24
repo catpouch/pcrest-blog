@@ -31,7 +31,6 @@ const apiRoute = nextConnect ({
 apiRoute.use(upload.single('thumbnail'))
 
 apiRoute.post(async (req, res) => {
-    //console.log(Object.keys(req.body))
     function getCurrentDate() {
         const today = new Date()
         const dd = String(today.getDate())
@@ -49,24 +48,27 @@ apiRoute.post(async (req, res) => {
     const body = req.body
     
     const keys = Object.keys(body)
-
-    if(!(keys.length === 4 && keys[0] === 'title' && keys[1] === 'author' && keys[2] === 'description' && keys[3] === 'content')) {
+    
+    if(!(keys.length === 5 && keys[0] === 'title' && keys[1] === 'author' && keys[2] === 'description' && keys[3] === 'content' && keys[4] === 'name')) {
         return res.status(400).send('Invalid request!')
     }
-
+    
     var title = processTitle(body.title)
 
     const final = {
         frontmatter: {
             title: body.title,
             author: body.author,
-            date: getCurrentDate(),
+            date: JSON.parse(fs.readFileSync(`./posts/${body.name}.json`, 'utf8')).frontmatter.date,
+            edited: getCurrentDate(),
             description: body.description,
             thumbnailUrl: req.file.filename
         },
         content: body.content
     }
 
+    fs.unlinkSync(`./posts/${body.name}.json`)
+    //fs.unlinkSync(`./uploads/${body.name}_thumbnail`)
     fs.writeFileSync('./posts/' + title + '.json', JSON.stringify(final))
 
     try {

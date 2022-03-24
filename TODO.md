@@ -4,9 +4,6 @@
   - ~~failure redirect page~~
   - prevent autofill (safari only? idk)
 
-- post editing
-  - update admin portal
-
 # LOW PRIORITY
 
 - post transfer from old blog
@@ -47,3 +44,6 @@
   - delete posts
   - create posts
   - style dropdown menu
+
+- post editing
+  - update admin portal

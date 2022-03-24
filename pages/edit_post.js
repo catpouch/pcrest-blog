@@ -8,16 +8,16 @@ import styles from './create_post.module.scss'
 import {useRouter} from 'next/router'
 const TextEditor = dynamic(() => import('../components/TextEditor'), {ssr: false})
 
-export default function CreatePost() {
+export default function EditPost() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
     const router = useRouter()
+    const query = router.query
 
     const upload_api = async event => {
         event.preventDefault()
         var data = new FormData(event.target)
         data.append('content', draftToHtml(convertToRaw(editorState.getCurrentContent())))
-        //PUT STUFF IN HERE LATER I'M TOO EXICTED
-        data.append('')
+        data.append('name', query.name)
         const response = await fetch('/api/edit', {
             method: 'POST',
             body: data
