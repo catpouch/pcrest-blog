@@ -68,7 +68,6 @@ apiRoute.post(async (req, res) => {
     }
 
     fs.unlinkSync(`./posts/${body.name}.json`)
-    //fs.unlinkSync(`./uploads/${body.name}_thumbnail`)
     fs.writeFileSync('./posts/' + title + '.json', JSON.stringify(final))
 
     try {

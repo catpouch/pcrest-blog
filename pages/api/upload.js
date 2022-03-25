@@ -3,6 +3,7 @@ import nextConnect from 'next-connect'
 import multer from 'multer'
 import { getSession } from 'next-auth/react'
 import permissions from '../../user_permissions.json'
+import sharp from 'sharp'
 
 function processTitle(title) {
     const files = fs.readdirSync('./posts')
@@ -22,12 +23,9 @@ const upload = multer({
     storage: multer.diskStorage({
         destination: './uploads',
         filename: (req, file, cb) => {
-            const regex = /(?:\.([^.]+))?$/
-            if(file.fieldname === 'thumbnail') {
-                cb(null, `${processTitle(req.body.title)}_thumbnail.${regex.exec(file.originalname)[1]}`)
-            } else {
-                cb(null, `${processTitle(req.body.title)}_image${Date.now()}${Math.round(Math.random() * 1E9)}.${regex.exec(file.originalname)[1]}`)
-            }
+            const arr = file.mimetype.split('/')
+            const dir = String(Date.now() + '.' + arr[arr.length - 1])
+            cb(null, dir)
         }
     })
 })
@@ -48,7 +46,6 @@ apiRoute.use(upload.fields([
 ]))
 
 apiRoute.post(async (req, res) => {
-    //console.log(Object.keys(req.body))
     function getCurrentDate() {
         const today = new Date()
         const dd = String(today.getDate())
@@ -71,15 +68,28 @@ apiRoute.post(async (req, res) => {
         return res.status(400).send('Invalid request!')
     }
 
+    let thumbnailName = null
+
+    for(const file in req.files) {
+        const dir = `uploads/${req.files[file][0].filename}`
+        if(file === 'thumbnail') {
+            thumbnailName = `${processTitle(body.title)}_thumbnail.webp`
+            await sharp(dir).toFile(`uploads/${thumbnailName}`)
+        } else {
+            thumbnailName = `${processTitle(body.title)}_image${Date.now()}${Math.round(Math.random() * 1E9)}.webp`
+            await sharp(dir).toFile(`uploads/${thumbnailName}`)
+        }
+        fs.unlinkSync(dir)
+    }
+
     var title = processTitle(body.title)
 
-    //IMPORTANT: SANITIZE THIS (maybe not important?)
     const frontmatter = {
         title: body.title,
         author: body.author,
         date: getCurrentDate(),
         description: body.description,
-        thumbnailUrl: req.files.thumbnail[0].filename
+        thumbnailUrl: thumbnailName
     }
     
     let final = {

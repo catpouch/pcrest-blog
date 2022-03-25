@@ -1,13 +1,16 @@
 # TODO
 
-- better sign in
-  - ~~failure redirect page~~
-  - prevent autofill (safari only? idk)
+- fix admin portal authentication issue (check comments)
+
+- better image handling
+  - ~~convert all to webp~~
+  - move out of next.js api route
+  - add quality and resolution settings
 
 # LOW PRIORITY
 
 - post transfer from old blog
-     - python?
+  - python?
 
 - goatsmakeart integration
   - user auth
@@ -15,13 +18,17 @@
   - actually make the page
 
 - domain name
-     - ~~pcrest.org subdomain~~
-     - ssl certificate
+  - ~~pcrest.org subdomain~~
+  - ssl certificate
 
 - better post deletion
-     - grace period
-     - ~~warning message~~
-     - ~~user auth~~
+  - grace period
+  - ~~warning message~~
+  - ~~user auth~~
+
+- better sign in
+  - ~~failure redirect page~~
+  - prevent autofill (safari only? idk)
 
 # DONE
 
@@ -47,3 +54,5 @@
 
 - post editing
   - update admin portal
+
+- fix fetch requests on production build

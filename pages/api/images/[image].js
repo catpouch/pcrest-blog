@@ -11,7 +11,7 @@ apiRoute.get(async (req, res) => {
     const { image } = await req.query
     const path = `./uploads/${image}`
     const stat = fs.statSync(path)
-    res.writeHead(200, {'Content-Type': 'image/jpeg', 'Content-Length': stat.size})
+    res.writeHead(200, {'Content-Type': 'image/webp', 'Content-Length': stat.size})
     const stream = fs.createReadStream(path)
     stream.pipe(res)
 })
