@@ -56,8 +56,9 @@
 }
 
 .thumbnail {
-    width: min(500px, 70vw);
-    height: 275px;
+    width: min(400px, 70vw);
+    //width: fit-content;
+    height: 300px;
     position: relative;
     margin-bottom: 0.75rem;
 }

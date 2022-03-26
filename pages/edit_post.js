@@ -6,9 +6,10 @@ import {useState} from 'react'
 import draftToHtml from 'draftjs-to-html'
 import styles from './create_post.module.scss'
 import {useRouter} from 'next/router'
+import fs from 'fs'
 const TextEditor = dynamic(() => import('../components/TextEditor'), {ssr: false})
 
-export default function EditPost() {
+export default function EditPost({autofill}) {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
     const router = useRouter()
     const query = router.query
@@ -33,14 +34,12 @@ export default function EditPost() {
                     <label htmlFor='author'> Author: </label>
                     <label htmlFor='description'> Description: </label>
                     <label htmlFor='thumbnail'> Thumbnail: </label>
-                    {/* <label htmlFor='images'> Images: </label> */}
                 </div>
                 <div className={styles.inputs}>
-                    <input type='text' name='title' id='title' required/>
-                    <input type='text' name='author' id='author' required/>
-                    <input type='text' name='description' id='description' required/>
+                    <input type='text' name='title' id='title' defaultValue={autofill.frontmatter.title} required/>
+                    <input type='text' name='author' id='author' defaultValue={autofill.frontmatter.author} required/>
+                    <input type='text' name='description' id='description' defaultValue={autofill.frontmatter.description} required/>
                     <input type='file' name='thumbnail' id='thumbnail' accept='image/*' required/>
-                    {/* <input type='file' name='images' id='images' accept='image/*' multiple/> */}
                 </div>
             </div>
             <div className={styles.editor}>
@@ -58,9 +57,11 @@ export async function getServerSideProps(context) {
         context.res.end()
         return {props: {}}
     }
+    const autofill = JSON.parse(fs.readFileSync(`./posts/${context.query.name}.json`, 'utf8'))
     return {
         props: {
-            user: session.user
+            user: session.user,
+            autofill
         }
     }
 }

@@ -27,11 +27,11 @@ export default function Toolbar(props) {
             <a key={0} href='/under_construction'>
                 JOURNALISM STAFF
             </a>
-            {sign}
             <a key={2} href='/under_construction'>
                 SEARCH
             </a>
             {admin_portal}
+            {sign}
         </ul>
     )
 }
