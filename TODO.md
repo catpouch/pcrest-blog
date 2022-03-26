@@ -1,7 +1,5 @@
 # TODO
 
-- fix admin portal authentication issue (check comments)
-
 - better image handling
   - ~~convert all to webp~~
   - move out of next.js api route
@@ -58,3 +56,5 @@
 - fix fetch requests on production build
 
 - add autofill for content field on edit_page
+
+- fix admin portal authentication issue
