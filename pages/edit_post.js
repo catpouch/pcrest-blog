@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react"
 import permissions from '../user_permissions.json'
 import dynamic from "next/dynamic"
-import {EditorState, convertToRaw} from 'draft-js'
+import {EditorState, ContentState, convertToRaw, convertFromHTML} from 'draft-js'
 import {useState} from 'react'
 import draftToHtml from 'draftjs-to-html'
 import styles from './create_post.module.scss'
@@ -10,7 +10,8 @@ import fs from 'fs'
 const TextEditor = dynamic(() => import('../components/TextEditor'), {ssr: false})
 
 export default function EditPost({autofill}) {
-    const [editorState, setEditorState] = useState(EditorState.createEmpty())
+    const fromHTML = convertFromHTML(autofill.content)
+    const [editorState, setEditorState] = useState(EditorState.createWithContent(ContentState.createFromBlockArray(fromHTML.contentBlocks, fromHTML.entityMap)))
     const router = useRouter()
     const query = router.query
 
