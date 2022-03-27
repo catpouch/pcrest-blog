@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 54410"
   },
   "dependencies": {
     "draft-js": "^0.11.7",
