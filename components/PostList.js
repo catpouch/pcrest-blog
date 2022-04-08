@@ -8,7 +8,7 @@ export default function PostList({posts}) {
             <Link href={'/posts/' + post.slug}>
                 <a className={styles.postWrapper}>
                     <div className={styles.thumbWrapper}>
-                        {post.thumbnailUrl ? <Image src={`http://localhost:3000/api/images/${post.thumbnailUrl}`} objectFit='cover' layout='fill'/> : null}
+                        {post.thumbnailUrl ? <Image src={`http://localhost:54410/api/images/${post.thumbnailUrl}`} objectFit='cover' layout='fill'/> : null}
                     </div>
                     <div className={styles.textWrapper}>
                         <div className={styles.title}>

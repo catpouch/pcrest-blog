@@ -24,11 +24,8 @@ export default function Toolbar(props) {
     }
     return (
         <ul className={styles.topWrapper}>
-            <a key={0} href='/under_construction'>
+            <a key={0} href='/journalism_staff'>
                 JOURNALISM STAFF
-            </a>
-            <a key={2} href='/under_construction'>
-                SEARCH
             </a>
             {admin_portal}
             {sign}

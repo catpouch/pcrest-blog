@@ -1,0 +1,55 @@
+.topWrapper {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.textWrapper {
+    width: min(750px, 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2rem;
+
+    span {
+        margin-top: 1rem;
+    }
+}
+
+.studentList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.student {
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid grey;
+    width: min(500px, 45vw);
+}
+
+.student:last-child {
+    border-bottom: none;
+}
+
+.pfp {
+    position: relative;
+    width: min(400px, 40vw);
+    aspect-ratio: 0.8 / 1;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    //margin-bottom: 1rem;
+}

@@ -1,42 +1,40 @@
 # TODO
 
-- better image handling
-  - ~~convert all to webp~~
-  - move out of next.js api route
-  - add quality and resolution settings
+- [ ] better image handling
+  - [x] convert all to webp
+  - [ ] move out of next.js api route
+  - [ ] add quality and resolution settings
 
-# LOW PRIORITY
+- [ ] post transfer from old blog
+  - [ ] python?
 
-- post transfer from old blog
-  - python?
+- [ ] goatsmakeart integration
+  - [ ] user auth
+  - [ ] instagram api integration
+  - [ ] actually make the page
 
-- goatsmakeart integration
+- [ ] search for posts
+
+- [ ] journalism staff page
+  - [ ] text and staff profiles from json file
+  - [ ] make it easily editable
+
+- [ ] domain name
+  - [x] pcrest.org subdomain
+  - [ ] ssl certificate
+
+- [x] better post deletion
+  - warning message
   - user auth
-  - instagram api integration
-  - actually make the page
+  - fixed revalidation for production build
 
-- domain name
-  - ~~pcrest.org subdomain~~
-  - ssl certificate
+- [x] fix local banner
 
-- better post deletion
-  - grace period
-  - ~~warning message~~
-  - ~~user auth~~
-
-- better sign in
-  - ~~failure redirect page~~
-  - prevent autofill (safari only? idk)
-
-# DONE
-
-- fix local banner
-
-- better authentication
+- [x] better authentication
      - no sign-in/out transition page
      - specific user permissions (possibly insecure? seems fine though)
 
-- better post creation
+- [x] better post creation
      - page styling
      - thumbnails
      - in-text images (halfway there)
@@ -44,17 +42,20 @@
      - SANITIZE USER INPUT (done?)
      - user auth
 
-- admin portal
+- [x] admin portal
   - style condensed post list
   - delete posts
   - create posts
   - style dropdown menu
 
-- post editing
+- [x] post editing
   - update admin portal
 
-- fix fetch requests on production build
+- [x] fix fetch requests on production build
 
-- add autofill for content field on edit_page
+- [x] add autofill for content field on edit_page
 
-- fix admin portal authentication issue
+- [x] fix admin portal authentication issue
+
+- [x] better sign in
+  - failure redirect page

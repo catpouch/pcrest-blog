@@ -14,7 +14,10 @@ export default async function handler(req, res) {
     const { delete_post } = await req.query
     try {
         fs.unlinkSync('./posts/' + delete_post + '.json')
+        await res.unstable_revalidate('/')
+        await res.unstable_revalidate('/posts/')
     } catch(e) {
+        console.log(`ATTEMPTED POST DELETION BY ${session.user.email} FAILED: ${e}`)
         return res.status(410).end()
     }
     return res.status(204).end()

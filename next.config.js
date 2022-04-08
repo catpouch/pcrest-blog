@@ -1,5 +1,5 @@
 module.exports = {
     images: {
-        domains: ['i.redd.it', 'localhost']
+        domains: ['blog.pcrest.org', 'localhost']
     }
 }

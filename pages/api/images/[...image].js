@@ -9,7 +9,7 @@ const apiRoute = nextConnect({
 
 apiRoute.get(async (req, res) => {
     const { image } = await req.query
-    const path = `./uploads/${image}`
+    const path = `./uploads/${image.join('/')}`
     const stat = fs.statSync(path)
     res.writeHead(200, {'Content-Type': 'image/webp', 'Content-Length': stat.size})
     const stream = fs.createReadStream(path)

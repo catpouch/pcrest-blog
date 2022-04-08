@@ -1,0 +1,15 @@
+{
+    "description": "",
+    "students": [
+        {
+            "name": "me",
+            "image": "blades.jpg",
+            "position": "big man"
+        },
+        {
+            "name": "you",
+            "image": "blades.jpg",
+            "position": "small man"
+        }
+    ]
+}
