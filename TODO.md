@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] sort posts by date
+
 - [ ] better image handling
   - [x] convert all to webp
   - [ ] move out of next.js api route

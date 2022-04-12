@@ -40,7 +40,7 @@ export default function EditPost({autofill}) {
                     <input type='text' name='title' id='title' defaultValue={autofill.frontmatter.title} required/>
                     <input type='text' name='author' id='author' defaultValue={autofill.frontmatter.author} required/>
                     <input type='text' name='description' id='description' defaultValue={autofill.frontmatter.description} required/>
-                    <input type='file' name='thumbnail' id='thumbnail' accept='image/*' required/>
+                    <input type='file' name='thumbnail' id='thumbnail' accept='image/*'/>
                 </div>
             </div>
             <div className={styles.editor}>

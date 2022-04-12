@@ -54,15 +54,16 @@ apiRoute.post(async (req, res) => {
     }
     
     var title = processTitle(body.title)
+    var previous = JSON.parse(fs.readFileSync(`./posts/${body.name}.json`, 'utf8'))
 
     const final = {
         frontmatter: {
             title: body.title,
             author: body.author,
-            date: JSON.parse(fs.readFileSync(`./posts/${body.name}.json`, 'utf8')).frontmatter.date,
+            date: previous.frontmatter.date,
             edited: getCurrentDate(),
             description: body.description,
-            thumbnailUrl: req.file.filename
+            thumbnailUrl: req.file.filename ? req.file.filename : previous.frontmatter.thumbnailUrl
         },
         content: body.content
     }
